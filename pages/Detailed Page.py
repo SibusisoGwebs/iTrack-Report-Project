@@ -219,13 +219,13 @@ if ui_width <= 768:
         st.table(filterData(selected).describe())
 else:
     with st.container():
-    cols1, cols2 = st.columns(2)
-    with cols1:
-        st.subheader(f'Table: Cameras with Alerts')
-        st.table(filterData(selected)[['Camera Name', 'Alerts']])
-    with cols2:
-        st.subheader(f'Summary Statistics')
-        st.table(filterData(selected).describe())
+        cols1, cols2 = st.columns(2)
+        with cols1:
+            st.subheader(f'Table: Cameras with Alerts')
+            st.table(filterData(selected)[['Camera Name', 'Alerts']])
+        with cols2:
+            st.subheader(f'Summary Statistics')
+            st.table(filterData(selected).describe())
 
 
 with st.container():
