@@ -166,31 +166,32 @@ with dataset:
         coll1, coll2, = st.columns(2)
         with coll1:
             st.markdown(f'<h3 style="color: green">Most Reads</h3>', unsafe_allow_html=True)
-            st.write(mostReads)
+            st.table(mostReads)
         with coll2:
             st.markdown(f'<h3 style="color: green">Least Reads</h3>', unsafe_allow_html=True)
-            st.write(minReads)
+            st.table(minReads)
         coll3, coll4 = st.columns(2)
         with coll3:
             st.markdown(f'<h3 style="color: #FF0000">Most Alerts</h3>', unsafe_allow_html=True)
-            st.write(mostAlerts)
+            st.table(mostAlerts)
         with coll4:
             st.markdown(f'<h3 style="color: #FF0000">Least Alerts</h3>', unsafe_allow_html=True)
-            st.write(minAlerts)
+            st.table(minAlerts)
     else:
-        coll1, coll2, coll3, coll4 = st.columns(4)
+        coll1, coll2, = st.columns(2)
         with coll1:
             st.markdown(f'<h3 style="color: green">Most Reads</h3>', unsafe_allow_html=True)
-            st.write(mostReadsFiltered)
+            st.table(mostReadsFiltered)
         with coll2:
             st.markdown(f'<h3 style="color: green">Least Reads</h3>', unsafe_allow_html=True)
-            st.write(leastReadsFiltered)
+            st.table(leastReadsFiltered)
+        coll3, coll4 = st.columns(2)
         with coll3:
             st.markdown(f'<h3 style="color: #FF0000">Most Alerts</h3>', unsafe_allow_html=True)
-            st.write(mostAlertsFiltered)
+            st.table(mostAlertsFiltered)
         with coll4:
             st.markdown(f'<h3 style="color: #FF0000">Least Alerts</h3>', unsafe_allow_html=True)
-            st.write(leastAlertsFiltered)
+            st.table(leastAlertsFiltered)
 
 
 
