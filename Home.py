@@ -78,7 +78,7 @@ def pieChartData(values, name, widths):
     pieChart = px.pie(data, values=values, names=name, hole=.5, template='ggplot2')
     pieChart.update_layout(autosize=True, height=500, width=widths,
                            margin=dict(t=80, b=80, l=80, r=80),
-                           plot_bgcolor='#dedede', paper_bgcolor='#00172B',
+                           plot_bgcolor='#dedede',
                            #    title_font=dict(
                            #        size=25, color='#a5a7ab', family="Muli, sans-serif"),
                            font=dict(size=18, color='#ffffff'),
