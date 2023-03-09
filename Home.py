@@ -201,7 +201,7 @@ with dataset:
             if ui_width <= 768:
                 st.subheader('Site\'s Total Alerts')
                 # figSummaryAlerts = px.bar(barChartData('Alerts'))
-                st.write(barChartData('Alerts', 580))
+                st.write(barChartData('Alerts', 420))
             elif ui_width > 768 and ui_width <= 1255:
                 st.subheader('Site\'s Total Alerts')
                 # figSummaryAlerts = px.bar(barChartData('Alerts'))
