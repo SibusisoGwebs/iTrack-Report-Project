@@ -192,69 +192,130 @@ with dataset:
         with coll4:
             st.markdown(f'<h3 style="color: #FF0000">Least Alerts</h3>', unsafe_allow_html=True)
             st.table(leastAlertsFiltered)
+    
 
 
-
-    left_coloumn, right_column = st.columns((2, 1))
-
-    with left_coloumn:
-        if typeTotal == "Total":
-            if ui_width <= 768:
-                st.subheader('Site\'s Total Alerts')
-                # figSummaryAlerts = px.bar(barChartData('Alerts'))
-                st.write(barChartData('Alerts', 420))
-            elif ui_width > 768 and ui_width <= 1255:
-                st.subheader('Site\'s Total Alerts')
-                # figSummaryAlerts = px.bar(barChartData('Alerts'))
-                st.write(barChartData('Alerts', 680))
-            elif ui_width > 1260:
-                st.subheader('Site\'s Total Alerts')
-                # figSummaryAlerts = px.bar(barChartData('Alerts'))
-                st.write(barChartData('Alerts', 1000))
+    if ui_width <= 768:
+        with st.container():
+            if typeTotal == "Total":
+                if ui_width <= 768:
+                    st.subheader('Site\'s Total Alerts')
+                    # figSummaryAlerts = px.bar(barChartData('Alerts'))
+                    st.write(barChartData('Alerts', 420))
+                elif ui_width > 768 and ui_width <= 1255:
+                    st.subheader('Site\'s Total Alerts')
+                    # figSummaryAlerts = px.bar(barChartData('Alerts'))
+                    st.write(barChartData('Alerts', 680))
+                elif ui_width > 1260:
+                    st.subheader('Site\'s Total Alerts')
+                    # figSummaryAlerts = px.bar(barChartData('Alerts'))
+                    st.write(barChartData('Alerts', 1000))
+                else:
+                    st.subheader('Site\'s Total Alerts')
+                    # figSummaryAlerts = px.bar(barChartData('Alerts'))
+                    st.write(barChartData('Alerts', 1200))
             else:
-                st.subheader('Site\'s Total Alerts')
-                # figSummaryAlerts = px.bar(barChartData('Alerts'))
-                st.write(barChartData('Alerts', 1200))
-        else:
-            if ui_width <= 768:
-                st.subheader(f'Site\'s Total Alerts of {period_selected1}')
-                # figSummaryAlerts = px.bar(barChartData('Alerts'))
-                st.write(barChartfiltered(
-                    summaryByAlertsfiltered(), 'Alerts', 580))
-            elif ui_width > 768 and ui_width <= 1255:
-                st.subheader(f'Site\'s Total Alerts of {period_selected1}')
-                # figSummaryAlerts = px.bar(barChartData('Alerts'))
-                st.write(barChartfiltered(
-                    summaryByAlertsfiltered(), 'Alerts', 680))
-            elif ui_width > 1260:
-                st.subheader(f'Site\'s Total Alerts of {period_selected1}')
-                # figSummaryAlerts = px.bar(barChartData('Alerts'))
-                st.write(barChartfiltered(
-                    summaryByAlertsfiltered(), 'Alerts', 1000))
-            else:
-                st.subheader(f'Site\'s Total Alerts of {period_selected1}')
-                # figSummaryAlerts = px.bar(barChartData('Alerts'))
-                st.write(barChartfiltered(
-                    summaryByAlertsfiltered(), 'Alerts', 1200))
+                if ui_width <= 768:
+                    st.subheader(f'Site\'s Total Alerts of {period_selected1}')
+                    # figSummaryAlerts = px.bar(barChartData('Alerts'))
+                    st.write(barChartfiltered(
+                        summaryByAlertsfiltered(), 'Alerts', 580))
+                elif ui_width > 768 and ui_width <= 1255:
+                    st.subheader(f'Site\'s Total Alerts of {period_selected1}')
+                    # figSummaryAlerts = px.bar(barChartData('Alerts'))
+                    st.write(barChartfiltered(
+                        summaryByAlertsfiltered(), 'Alerts', 680))
+                elif ui_width > 1260:
+                    st.subheader(f'Site\'s Total Alerts of {period_selected1}')
+                    # figSummaryAlerts = px.bar(barChartData('Alerts'))
+                    st.write(barChartfiltered(
+                        summaryByAlertsfiltered(), 'Alerts', 1000))
+                else:
+                    st.subheader(f'Site\'s Total Alerts of {period_selected1}')
+                    # figSummaryAlerts = px.bar(barChartData('Alerts'))
+                    st.write(barChartfiltered(
+                        summaryByAlertsfiltered(), 'Alerts', 1200))
 
-    with right_column:
-        if typeTotal == "Total":
-            if selectedSummary == 'Summary':
-                # st.subheader(f'10 JHI Sites')
-                st.subheader('Summary of Sites')
-                st.table(summary[['Reads', 'Alerts']])
+        with st.container():
+            if typeTotal == "Total":
+                if selectedSummary == 'Summary':
+                    # st.subheader(f'10 JHI Sites')
+                    st.subheader('Summary of Sites')
+                    st.table(summary[['Reads', 'Alerts']])
+                else:
+                    camera_count = data.shape[0]
+                    # st.subheader(f'Total of {camera_count} Camera(s)')
+                    st.subheader('Summary Statistics')
+                    st.table(data[['Reads', 'Alerts']].describe())
             else:
-                camera_count = data.shape[0]
-                # st.subheader(f'Total of {camera_count} Camera(s)')
-                st.subheader('Summary Statistics')
-                st.table(data[['Reads', 'Alerts']].describe())
-        else:
-            if selectedSummary == 'Summary':
-                st.subheader(f'Site Summary for {period_selected1}')
-                st.table(summaryFilteredByPeriod(period_selected1)[['Reads', 'Alerts']])
+                if selectedSummary == 'Summary':
+                    st.subheader(f'Site Summary for {period_selected1}')
+                    st.table(summaryFilteredByPeriod(period_selected1)[['Reads', 'Alerts']])
+                else:
+                    st.subheader(f'Site Statistics for {period_selected1}')
+                    st.table(summaryFilteredByPeriod(period_selected1)[['Reads', 'Alerts']].describe())
+    else:
+        left_coloumn, right_column = st.columns((2, 1))
+        with left_coloumn:
+            if typeTotal == "Total":
+                if ui_width <= 768:
+                    st.subheader('Site\'s Total Alerts')
+                    # figSummaryAlerts = px.bar(barChartData('Alerts'))
+                    st.write(barChartData('Alerts', 420))
+                elif ui_width > 768 and ui_width <= 1255:
+                    st.subheader('Site\'s Total Alerts')
+                    # figSummaryAlerts = px.bar(barChartData('Alerts'))
+                    st.write(barChartData('Alerts', 680))
+                elif ui_width > 1260:
+                    st.subheader('Site\'s Total Alerts')
+                    # figSummaryAlerts = px.bar(barChartData('Alerts'))
+                    st.write(barChartData('Alerts', 1000))
+                else:
+                    st.subheader('Site\'s Total Alerts')
+                    # figSummaryAlerts = px.bar(barChartData('Alerts'))
+                    st.write(barChartData('Alerts', 1200))
             else:
-                st.subheader(f'Site Statistics for {period_selected1}')
-                st.table(summaryFilteredByPeriod(period_selected1)[['Reads', 'Alerts']].describe())
+                if ui_width <= 768:
+                    st.subheader(f'Site\'s Total Alerts of {period_selected1}')
+                    # figSummaryAlerts = px.bar(barChartData('Alerts'))
+                    st.write(barChartfiltered(
+                        summaryByAlertsfiltered(), 'Alerts', 580))
+                elif ui_width > 768 and ui_width <= 1255:
+                    st.subheader(f'Site\'s Total Alerts of {period_selected1}')
+                    # figSummaryAlerts = px.bar(barChartData('Alerts'))
+                    st.write(barChartfiltered(
+                        summaryByAlertsfiltered(), 'Alerts', 680))
+                elif ui_width > 1260:
+                    st.subheader(f'Site\'s Total Alerts of {period_selected1}')
+                    # figSummaryAlerts = px.bar(barChartData('Alerts'))
+                    st.write(barChartfiltered(
+                        summaryByAlertsfiltered(), 'Alerts', 1000))
+                else:
+                    st.subheader(f'Site\'s Total Alerts of {period_selected1}')
+                    # figSummaryAlerts = px.bar(barChartData('Alerts'))
+                    st.write(barChartfiltered(
+                        summaryByAlertsfiltered(), 'Alerts', 1200))
+
+        with right_column:
+            if typeTotal == "Total":
+                if selectedSummary == 'Summary':
+                    # st.subheader(f'10 JHI Sites')
+                    st.subheader('Summary of Sites')
+                    st.table(summary[['Reads', 'Alerts']])
+                else:
+                    camera_count = data.shape[0]
+                    # st.subheader(f'Total of {camera_count} Camera(s)')
+                    st.subheader('Summary Statistics')
+                    st.table(data[['Reads', 'Alerts']].describe())
+            else:
+                if selectedSummary == 'Summary':
+                    st.subheader(f'Site Summary for {period_selected1}')
+                    st.table(summaryFilteredByPeriod(period_selected1)[['Reads', 'Alerts']])
+                else:
+                    st.subheader(f'Site Statistics for {period_selected1}')
+                    st.table(summaryFilteredByPeriod(period_selected1)[['Reads', 'Alerts']].describe())
+
+    
 
     left1_coloumn, right1_column = st.columns(2)
     with st.container():
