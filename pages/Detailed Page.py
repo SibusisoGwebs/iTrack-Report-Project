@@ -210,8 +210,15 @@ with st.container():
         st.subheader(f'Alerts By Cameras')
         st.write(fig)
     # st.bar_chart(filterData(selected), x='Camera Name', y='Alerts')
-
-with st.container():
+if ui_width <= 768:
+    with st.container():
+        st.subheader(f'Table: Cameras with Alerts')
+        st.table(filterData(selected)[['Camera Name', 'Alerts']])
+    with st.container():
+        st.subheader(f'Summary Statistics')
+        st.table(filterData(selected).describe())
+else:
+    with st.container():
     cols1, cols2 = st.columns(2)
     with cols1:
         st.subheader(f'Table: Cameras with Alerts')
