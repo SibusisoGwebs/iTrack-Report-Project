@@ -201,7 +201,7 @@ with dataset:
             if ui_width <= 768:
                 st.subheader('Site\'s Total Alerts')
                 # figSummaryAlerts = px.bar(barChartData('Alerts'))
-                st.write(barChartData('Alerts', 420))
+                st.write(barChartData('Alerts', 580))
             elif ui_width > 768 and ui_width <= 1255:
                 st.subheader('Site\'s Total Alerts')
                 # figSummaryAlerts = px.bar(barChartData('Alerts'))
@@ -219,7 +219,7 @@ with dataset:
                 st.subheader(f'Site\'s Total Alerts of {period_selected1}')
                 # figSummaryAlerts = px.bar(barChartData('Alerts'))
                 st.write(barChartfiltered(
-                    summaryByAlertsfiltered(), 'Alerts', 420))
+                    summaryByAlertsfiltered(), 'Alerts', 580))
             elif ui_width > 768 and ui_width <= 1255:
                 st.subheader(f'Site\'s Total Alerts of {period_selected1}')
                 # figSummaryAlerts = px.bar(barChartData('Alerts'))
@@ -260,7 +260,7 @@ with dataset:
         if ui_width <= 768:
             st.subheader('Site\'s Total Reads')
             figSummaryReads = px.bar(
-                summaryByReads, y='Reads', width=420, template='presentation', color='Reads', text_auto=True)
+                summaryByReads, y='Reads', width=580, template='presentation', color='Reads', text_auto=True)
             st.write(figSummaryReads)
         elif ui_width > 768 and ui_width <= 1255:
             st.subheader('Site\'s Total Reads')
@@ -281,7 +281,7 @@ with dataset:
     with st.container():
         if ui_width <= 768:
             st.subheader('Site\'s Reads Percentage')
-            readsPieChart = pieChartData('Reads', 'Site', 420)
+            readsPieChart = pieChartData('Reads', 'Site', 580)
             st.write(readsPieChart)
         elif ui_width > 768 and ui_width <= 1255:
             st.subheader('Site\'s Reads Percentage')
